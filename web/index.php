@@ -10,9 +10,12 @@ else if (isset($_POST['action'])) {
 }
 
 switch ($action) {
-    default:
+  case "assignments":
+    include "views/assignments.php";
+  break; 
+  default:
     include "views/ocHome.php";
-break;
+  break;
 }
 
 ?>
