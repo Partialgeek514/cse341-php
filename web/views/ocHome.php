@@ -14,7 +14,7 @@
         <a <?php echo "href='/index.php?action=assignments'"; ?>>Assignments</a>
     </header>
     <main>
-        <p id="description">These are my OCs!</p>
+        <p id="description">These are my OCs! (Original Characters)</p>
         <div id="OCpics">
             <img id="imgPhoenix" class="clickModel" src="../images/Phoenix with Ladybugs by AmyGamy.jpg" alt="Phoenix Gleam">
             <img id="imgSilver" class="clickModel" src="../images/Silverbelle Smug.png" alt="Silverbelle">

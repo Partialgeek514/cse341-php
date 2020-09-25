@@ -11,16 +11,16 @@ else if (isset($_POST['character'])) {
 
 switch ($character) {
     case "imgPhoenix":
-        echo "Phoenix Gleam";
+        echo "Phoenix Gleam (Unicorn/Male)";
     break;
     case "imgSilver":
-        echo "Silverbelle";
+        echo "Silverbelle (Pegasus/Female)";
     break;
     case "imgCotton":
-        echo "Cotton Stream";
+        echo "Cotton Stream (Griffin/Female)";
     break;
     case "imgNeon":
-        echo "Neon";
+        echo "Neon (Pegasus/Female)";
     break;
     default:
     echo "(No Caption)";
