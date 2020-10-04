@@ -101,6 +101,68 @@ a {
     color: #bbbbbb;
 }
 
+.productImg {
+  max-width: 200px;
+  width: 100%;
+}
+
+.productContainer {
+    margin: 30px;
+    padding: 5px;
+    background-color: white;
+    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.addCart {
+    color: orange;
+}
+
+.menuButton {
+    margin: 4px;
+    padding: 5px 15px;
+    background-color: orange;
+    color: white;
+    width: 80%;
+}
+
+.menuButton:hover {
+    background-color: rgb(212, 138, 0);
+}
+
+#cartMenu {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.cartPage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+#cartList {
+    font-size: small;
+}
+
+#cartList img {
+    max-width: 100px;
+}
+
+form {
+    background-color: white;
+    border: 2px solid black;
+    width: 100%;
+    padding: 5px;
+}
+
+#confirmedAddress {
+    margin: auto;
+}
+
 @media (min-width: 700px) {
     #OCpics {
         grid-template-columns: 1fr 1fr;
@@ -120,5 +182,21 @@ a {
 
     #caption {
         width: 60%;
+    }
+
+    #cartList {
+        width: 60%;
+    }
+
+    #cartMenu {
+        width: 30%;
+    }
+
+    form {
+        width: 50%;
+    }
+
+    .addressInput {
+        width: 300px;
     }
 }

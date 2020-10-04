@@ -12,7 +12,10 @@
         <a <?php echo "href='/index.php'"; ?>>My OCs</a>
     </header>
     <main>
-        <p id="description">No assignments yet...</p>
+        <p id="description">Assignments:</p>
+        <ul>
+            <li><a href="/index.php?action=assignW03">W03 Assignment</a>
+        </ul>
     </main>
 </body>
 </html>
