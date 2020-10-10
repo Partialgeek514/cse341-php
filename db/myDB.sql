@@ -2,10 +2,13 @@
 ------------------------------------------------------------
 
 -- Clean-up
-DROP TABLE games;
+DROP TABLE IF EXISTS games;
+DROP TABLE IF EXISTS accounts;
+DROP TABLE IF EXISTS reviews;
 
-DROP TYPE esrbRating;
-DROP TYPE fiveStarRating;
+DROP TYPE IF EXISTS esrbRating;
+DROP TYPE IF EXISTS fiveStarRating;
+DROP TYPE IF EXISTS tripleLevel;
 
 ------------------------------------------------------------
 
@@ -26,3 +29,31 @@ CREATE TABLE games (
 );
 
 --------------------------------------------------------------
+
+-- Accounts Table: userId, userName, hashedPassword, birthday, profilePic, adminLevel
+CREATE TYPE tripleLevel AS ENUM ('1', '2', '3');
+CREATE TABLE accounts (
+    userId SERIAL PRIMARY KEY NOT NULL,
+    username VARCHAR(64) NOT NULL,
+    hashedPassword VARCHAR(999) NOT NULL,
+    birthday DATE NOT NULL,
+    profilePic VARCHAR(255) NOT NULL,
+    adminLevel tripleLevel NOT NULL
+);
+
+---------------------------------------------------------------
+
+-- Reviews Table: reviewId, reviewContent, gameId, userId, reviewDate
+CREATE TABLE reviews (
+    reviewId SERIAL PRIMARY KEY NOT NULL,
+    reviewContent VARCHAR(255) NOT NULL,
+    gameId INTEGER NOT NULL,
+    userId INTEGER NOT NULL,
+    reviewDate DATE NOT NULL,
+    CONSTRAINT fk_game
+        FOREIGN KEY (gameId)
+            REFERENCES games(gameId),
+    CONSTRAINT fk_account
+        FOREIGN KEY (userId)
+            REFERENCES accounts(userId)
+);
