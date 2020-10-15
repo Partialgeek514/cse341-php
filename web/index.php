@@ -8,6 +8,9 @@ if (isset($_GET['action'])) {
 else if (isset($_POST['action'])) {
   $action = $_POST['action'];
 }
+else {
+  $action = '';
+}
 
 switch ($action) {
   case "assignments":
