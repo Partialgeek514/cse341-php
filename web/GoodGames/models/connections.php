@@ -27,10 +27,12 @@ function getConnection()
     }
 }
 
+/*
 $db = getConnection();
 $result = $db->query("SELECT table_name
 FROM information_schema.tables
 WHERE table_schema = 'public'
 ORDER BY table_name;");
 var_dump($result->fetchAll());
+*/
 //phpinfo();
