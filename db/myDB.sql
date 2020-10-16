@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS platformTypes;
 DROP TABLE IF EXISTS genres;
 DROP TABLE IF EXISTS producers;
 
-DROP TYPE IF EXISTS bool;
+DROP TYPE IF EXISTS boolTruth;
 DROP TYPE IF EXISTS esrbRating;
 DROP TYPE IF EXISTS fiveStarRating;
 DROP TYPE IF EXISTS tripleLevel;
@@ -57,12 +57,12 @@ CREATE TABLE platforms (
 );
 ------------------------------------------------------------
 -- Platform Images Table: id, path, platformId, primaryImg
-CREATE TYPE bool AS ENUM ('0', '1');
+CREATE TYPE boolTruth AS ENUM ('0', '1');
 CREATE TABLE platformImages (
     platImgId SERIAL PRIMARY KEY NOT NULL,
     imgPath VARCHAR(255) NOT NULL,
     platformId INTEGER NOT NULL,
-    primaryImg bool NOT NULL,
+    primaryImg boolTruth NOT NULL,
     CONSTRAINT fk_platform
         FOREIGN KEY (platformId)
             REFERENCES platforms(platformId)
@@ -74,7 +74,7 @@ CREATE TYPE fiveStarRating AS ENUM ('1', '2', '3', '4', '5');
 CREATE TABLE games (
     gameId SERIAL PRIMARY KEY NOT NULL,
     gameTitle VARCHAR(64) NOT NULL,
-    gameDescription VARCHAR(255),
+    gameDescription VARCHAR(999),
     gameYear INT NOT NULL,
     producerId INTEGER,
     genreId INTEGER,
@@ -97,11 +97,10 @@ CREATE TABLE gameImages (
     gameImgId SERIAL PRIMARY KEY NOT NULL,
     imgPath VARCHAR(255) NOT NULL,
     gameId INTEGER NOT NULL,
-    platformId INTEGER,
-    primaryImg bool NOT NULL,
-    CONSTRAINT fk_platform
-        FOREIGN KEY (platformId)
-            REFERENCES platforms(platformId)
+    primaryImg boolTruth NOT NULL,
+    CONSTRAINT fk_game
+        FOREIGN KEY (gameId)
+            REFERENCES games(gameId)
 );
 --------------------------------------------------------------
 CREATE TABLE logoImages (
@@ -110,7 +109,7 @@ CREATE TABLE logoImages (
     platformId INTEGER,
     gameId INTEGER,
     producerId INTEGER,
-    primaryImg bool NOT NULL,
+    primaryImg boolTruth NOT NULL,
     CONSTRAINT fk_platform
         FOREIGN KEY (platformId)
             REFERENCES platforms(platformId),
