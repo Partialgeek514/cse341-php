@@ -15,7 +15,7 @@
         <p id="description">Assignments:</p>
         <ul>
             <li><a href="/index.php?action=assignW03">W03 Assignment</a>
-            <li><a href="/index.php?action=project1"></a></li>
+            <li><a href="/index.php?action=project1">Project 1</a></li>
         </ul>
     </main>
 </body>
