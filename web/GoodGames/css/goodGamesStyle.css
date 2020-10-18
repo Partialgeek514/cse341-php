@@ -1,0 +1,77 @@
+body {
+    background-color: rgb(82, 82, 82);
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: white;
+    padding: 10px;
+    height: 70px;
+    font-family: 'Exo 2', sans-serif;
+    box-shadow: 0 1px rgb(228, 228, 228);
+    position: relative;
+    z-index: 1;
+}
+
+.logo {
+    font-family: 'Exo 2', sans-serif;
+    margin: 5px;
+    color: rgb(82, 82, 82);
+    font-size: xx-large;
+}
+
+.navBar {
+    list-style-type: none;
+    margin: 0;
+    padding: 3px;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    color: rgb(82, 82, 82);
+    position: relative;
+    z-index: 0;
+}
+
+.navItem {
+    padding: 1px 5px;
+}
+
+.navItem > a {
+    color: rgb(82, 82, 82);
+    font-family: 'Exo 2', sans-serif;
+}
+
+.navItem > a:hover, .navItem:hover {
+    background-color: rgb(128, 128, 128);
+    color: white;
+}
+
+.feature {
+    margin: 0 auto;
+    width: 70%;
+    background-color: white;
+    font-family: 'Exo 2', sans-serif;
+    border: 1px solid black;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.imgBox {
+    width: 150px;
+    margin: 10px;
+}
+
+img {
+    max-width: 100%;
+    border: 2px solid black;
+    border-radius: 5px;
+}

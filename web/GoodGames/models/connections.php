@@ -36,3 +36,19 @@ ORDER BY table_name;");
 var_dump($result->fetchAll());
 */
 //phpinfo();
+
+function getNavData() {
+    $dbConn = getConnection();
+    $navData = $dbConn->query('SELECT * FROM genres;');
+    return $navData;
+}
+
+function getFeatures() {
+    $dbConn = getConnection();
+    $features = $dbConn->query("SELECT * 
+                                FROM games
+                                INNER JOIN gameImages ON games.gameId=gameImages.gameId 
+                                WHERE gameTitle 
+                                IN ('The Legend of Zelda: Breath of the Wild', 'MarioKart 8 Deluxe');");
+    return $features;
+}
