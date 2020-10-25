@@ -52,7 +52,7 @@ header, footer {
     color: white;
 }
 
-.feature {
+.feature, .gameBrowse, .gameDetails, .reviewEntry, .review {
     margin: 0 auto;
     width: 70%;
     background-color: white;

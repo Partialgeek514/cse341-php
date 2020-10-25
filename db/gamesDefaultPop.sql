@@ -27,3 +27,12 @@ INSERT INTO gameImages (imgPath, gameId, primaryImg)
 VALUES ('/GoodGames/images/gameImages/mariokart_8_deluxe_cover_art.png', 
         (SELECT gameId FROM games WHERE gameTitle = 'MarioKart 8 Deluxe'),
         '1');
+
+INSERT INTO accounts (username,
+                      hashedPassword,
+                      birthday,
+                      adminLevel)
+VALUES ('sysAdmin',
+        'password',
+        '01-01-2000',
+        '3');

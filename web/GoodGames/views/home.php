@@ -17,12 +17,12 @@
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/GoodGames/views/snippets/nav.php'; ?>
     </nav>
     <main>
+        <?php
+        if (isset($_SESSION['message'])) {
+            echo "<div class='feature'><p class='message'>$_SESSION[message]</p></div>";
+            unset($_SESSION['message']);
+        } ?>
         <div class="feature">
-            <?php
-            if (isset($_SESSION['message'])) {
-                echo "<p class='message'>$_SESSION[message]</p>";
-                unset($_SESSION['message']);
-            } ?>
             <h2>Today's Featured Games</h2>
         </div>
         <?php echo $features; ?>

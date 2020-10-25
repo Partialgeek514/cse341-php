@@ -144,7 +144,7 @@ CREATE TABLE reviews (
     reviewContent VARCHAR(255) NOT NULL,
     gameId INTEGER NOT NULL,
     userId INTEGER NOT NULL,
-    reviewDate DATE NOT NULL,
+    reviewDate DATE NOT NULL DEFAULT NOW(),
     CONSTRAINT fk_game
         FOREIGN KEY (gameId)
             REFERENCES games(gameId),

@@ -52,3 +52,60 @@ function getFeatures() {
                                 IN ('The Legend of Zelda: Breath of the Wild', 'MarioKart 8 Deluxe');");
     return $features;
 }
+
+function getGenreName($genreId) {
+    $dbConn = getConnection();
+    $genreName = $dbConn->query("SELECT genreName
+                                 FROM genres
+                                 WHERE genreId = $genreId;");
+    return ($genreName->fetchAll())[0]['genrename'];
+}
+
+function getGamesDataByGenre($genreId) {
+    $dbConn = getConnection();
+    $games = $dbConn->query("SELECT * 
+                            FROM games
+                            INNER JOIN gameImages ON games.gameId=gameImages.gameId 
+                            WHERE genreId = $genreId;");
+    return $games;
+}
+
+function getGameData($gameId) {
+    $dbConn = getConnection();
+    $gameData = $dbConn->query("SELECT * 
+                                FROM games
+                                INNER JOIN gameImages ON games.gameId=gameImages.gameId 
+                                WHERE games.gameId = $gameId;");
+    return $gameData->fetch();
+}
+
+function getGameNameData($gameId) {
+    $dbConn = getConnection();
+    $gameData = $dbConn->query("SELECT gameTitle 
+                                FROM games 
+                                WHERE gameId = $gameId;");
+    return ($gameData->fetch())['gametitle'];
+}
+
+function getUserData($username) {
+    $dbConn = getConnection();
+    $userData = $dbConn->query("SELECT *
+                                FROM accounts
+                                WHERE username = '$username';");
+    return $userData->fetch();
+}
+
+function insertReview($userId, $gameId, $reviewText) {
+    $dbConn = getConnection();
+    $result = $dbConn->query("INSERT INTO reviews (reviewContent, gameId, userId)
+                              VALUES ('$reviewText', $gameId, $userId);");
+    return $result->rowCount();
+}
+
+function getReviewData($gameId) {
+    $dbConn = getConnection();
+    $reviewData = $dbConn->query("SELECT * 
+                                  FROM reviews
+                                  WHERE gameId = $gameId");
+    return $reviewData->fetchAll();
+}
