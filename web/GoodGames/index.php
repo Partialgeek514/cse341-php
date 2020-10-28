@@ -9,8 +9,8 @@ if ($_ENV['MEMCACHIER_USERNAME']) {
     ini_set('memcached.sess_sasl_password', getenv('MEMCACHIER_PASSWORD'));
 }
 session_start();
-phpinfo();
-exit;
+//phpinfo();
+//exit;
 include_once $_SERVER['DOCUMENT_ROOT'] . '/GoodGames/functions.php';
 
 if (isset($_GET['action'])) {
