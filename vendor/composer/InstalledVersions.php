@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '171d54fb27786b135a095fec700ceb394ae2b1a5',
+    'reference' => '1e03bb9ed097e260db913d1347e6f4610a13ed0e',
     'name' => '__root__',
   ),
   'versions' => 
@@ -31,7 +31,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '171d54fb27786b135a095fec700ceb394ae2b1a5',
+      'reference' => '1e03bb9ed097e260db913d1347e6f4610a13ed0e',
     ),
   ),
 );
