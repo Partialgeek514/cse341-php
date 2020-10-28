@@ -1,14 +1,15 @@
 <?php
 //GoodGames Accounts Controller
-session_start();
 if ($_ENV['MEMCACHIER_USERNAME']) {
     ini_set('session.save_handler', 'memcached');
     ini_set('session.save_path', getenv('MEMCACHIER_SERVERS'));
-    ini_set('memcached.sess_persistent', "On");
+    ini_set('memcached.sess_persistent', 1);
     ini_set('memcached.sess_binary_protocol', 1);
     ini_set('memcached.sess_sasl_username', getenv('MEMCACHIER_USERNAME'));
     ini_set('memcached.sess_sasl_password', getenv('MEMCACHIER_PASSWORD'));
 }
+session_start();
+
 include_once $_SERVER['DOCUMENT_ROOT'] . '/GoodGames/functions.php';
 
 if (isset($_GET['action'])) {
