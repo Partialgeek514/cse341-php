@@ -26,7 +26,7 @@
             <h2>Login</h2>
         </div>
         <div class="feature">
-            <form action="/GoodGames/accounts" method="POST">
+            <form action="/GoodGames/accounts" method="GET">
                 <label for="username">Username</label><br>
                 <input type="text" name="username"><br>
                 <label for="password">Password</label><br>
