@@ -7,6 +7,7 @@ if ($_ENV['MEMCACHIER_USERNAME']) {
     if (version_compare(phpversion('memcached'), '3', '>=')) {
         ini_set('memcached.sess_persistent', "On");
         ini_set('memcached.sess_binary_protocol', 1);
+        exit;
     } else {
         ini_set('session.save_path', 'PERSISTENT=myapp_session ' . ini_get('session.save_path'));
         ini_set('memcached.sess_binary', 1);
