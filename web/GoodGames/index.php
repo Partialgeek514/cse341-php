@@ -1,22 +1,26 @@
 <?php
 //GoodGames Main Controller
 session_start();
-if($_ENV['REDIS_URL']) {
-    $redisUrlParts = parse_url($_ENV['REDIS_URL']);
-    ini_set('session.save_handler','redis');
-    ini_set('session.save_path',"tcp://$redisUrlParts[host]:$redisUrlParts[port]?auth=$redisUrlParts[pass]");
-    var_dump($_ENV['REDIS_URL']);
-    exit;
-  }
+if ($_ENV['MEMCACHIER_USERNAME']) {
+    ini_set('session.save_handler', 'memcached');
+    ini_set('session.save_path', getenv('MEMCACHIER_SERVERS'));
+    if (version_compare(phpversion('memcached'), '3', '>=')) {
+        ini_set('memcached.sess_persistent', 1);
+        ini_set('memcached.sess_binary_protocol', 1);
+    } else {
+        ini_set('session.save_path', 'PERSISTENT=myapp_session ' . ini_get('session.save_path'));
+        ini_set('memcached.sess_binary', 1);
+    }
+    ini_set('memcached.sess_sasl_username', getenv('MEMCACHIER_USERNAME'));
+    ini_set('memcached.sess_sasl_password', getenv('MEMCACHIER_PASSWORD'));
+}
 include_once $_SERVER['DOCUMENT_ROOT'] . '/GoodGames/functions.php';
 
 if (isset($_GET['action'])) {
     $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
-}
-elseif (isset($_POST['action'])) {
+} elseif (isset($_POST['action'])) {
     $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
-}
-else {
+} else {
     $action = '';
 }
 
@@ -28,28 +32,27 @@ switch ($action) {
         $genre = getGenre($genreId);
         $games = getGamesByGenre($genreId);
         include $_SERVER['DOCUMENT_ROOT'] . '/GoodGames/views/browse.php';
-    break;
+        break;
     case 'details':
         $gameId = filter_input(INPUT_GET, 'gameId', FILTER_SANITIZE_NUMBER_INT);
         $gameName = getGameName($gameId);
         $gameDetails = getGameDetails($gameId);
         $reviews = getReviews($gameId);
         include $_SERVER['DOCUMENT_ROOT'] . '/GoodGames/views/gameDetails.php';
-    break;
+        break;
     case 'createReview':
         $reviewText = filter_input(INPUT_POST, 'reviewText', FILTER_SANITIZE_STRING);
         $gameId = filter_input(INPUT_POST, 'gameId', FILTER_SANITIZE_NUMBER_INT);
         $reviewSuccess = createReview($reviewText, $gameId);
         if ($reviewSuccess) {
             header("Location: /GoodGames?action=details&gameId=$gameId");
-        }
-        else {
+        } else {
             $_SESSION['message'] = "Failed to write review";
             header("Location: /GoodGames?action=details&gameId=$gameId");
         }
-    break;
+        break;
     default:
         $features = getFeatured();
         include $_SERVER['DOCUMENT_ROOT'] . '/GoodGames/views/home.php';
-    break;
+        break;
 }

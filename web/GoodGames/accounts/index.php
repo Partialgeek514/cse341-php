@@ -1,11 +1,19 @@
 <?php
 //GoodGames Accounts Controller
 session_start();
-if($_ENV['REDIS_URL']) {
-    $redisUrlParts = parse_url($_ENV['REDIS_URL']);
-    ini_set('session.save_handler','redis');
-    ini_set('session.save_path',"tcp://$redisUrlParts[host]:$redisUrlParts[port]?auth=$redisUrlParts[pass]");
-  }
+if ($_ENV['MEMCACHIER_USERNAME']) {
+    ini_set('session.save_handler', 'memcached');
+    ini_set('session.save_path', getenv('MEMCACHIER_SERVERS'));
+    if (version_compare(phpversion('memcached'), '3', '>=')) {
+        ini_set('memcached.sess_persistent', 1);
+        ini_set('memcached.sess_binary_protocol', 1);
+    } else {
+        ini_set('session.save_path', 'PERSISTENT=myapp_session ' . ini_get('session.save_path'));
+        ini_set('memcached.sess_binary', 1);
+    }
+    ini_set('memcached.sess_sasl_username', getenv('MEMCACHIER_USERNAME'));
+    ini_set('memcached.sess_sasl_password', getenv('MEMCACHIER_PASSWORD'));
+}
 include_once $_SERVER['DOCUMENT_ROOT'] . '/GoodGames/functions.php';
 
 if (isset($_GET['action'])) {
