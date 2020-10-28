@@ -40,6 +40,8 @@ switch ($action) {
         }
         else {
             $_SESSION['message'] = "Login Failed";
+            echo $_SESSION['message'];
+            exit;
             include $_SERVER['DOCUMENT_ROOT'] . '/GoodGames/views/login.php';
         }
     break;
