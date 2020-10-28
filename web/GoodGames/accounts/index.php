@@ -34,6 +34,8 @@ switch ($action) {
         $loginSuccess = loginUser($username, $password);
         if ($loginSuccess == true) {
             $_SESSION['message'] = "Welcome $_SESSION[username]";
+            echo $_SESSION['message'];
+            exit;
             header("Location: /GoodGames");
         }
         else {
