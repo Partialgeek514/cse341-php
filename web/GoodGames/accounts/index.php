@@ -52,6 +52,8 @@ switch ($action) {
         header('Location: /GoodGames');
     break;
     default:
+    echo "default";
+            exit;
         header('Location: /GoodGames');
     break;
 }
