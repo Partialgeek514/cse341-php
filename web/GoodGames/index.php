@@ -11,13 +11,13 @@
 session_start();
 //phpinfo();
 //exit;
-if (!isset($_SESSION['count'])) {
+/*if (!isset($_SESSION['count'])) {
     $_SESSION['count'] = 0;
 }
 $_SESSION['count']++;
 
 echo "Hello #" . $_SESSION['count'];
-exit;
+exit;*/
 include_once $_SERVER['DOCUMENT_ROOT'] . '/GoodGames/functions.php';
 
 if (isset($_GET['action'])) {
