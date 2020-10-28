@@ -52,7 +52,7 @@ switch ($action) {
         header('Location: /GoodGames');
     break;
     default:
-    echo "default";
+    echo $_POST['action'];
             exit;
         header('Location: /GoodGames');
     break;
