@@ -29,21 +29,21 @@ switch ($action) {
         include $_SERVER['DOCUMENT_ROOT'] . '/GoodGames/views/login.php';
     break;
     case 'loginUser':
-        echo "loginUser";
-            exit;
+       // echo "loginUser";
+         //   exit;
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
         $loginSuccess = loginUser($username, $password);
         if ($loginSuccess == true) {
             $_SESSION['message'] = "Welcome $_SESSION[username]";
-            echo $_SESSION['message'];
-            exit;
+          //  echo $_SESSION['message'];
+            //exit;
             header("Location: /GoodGames");
         }
         else {
             $_SESSION['message'] = "Login Failed";
-            echo $_SESSION['message'];
-            exit;
+          //  echo $_SESSION['message'];
+            //exit;
             include $_SERVER['DOCUMENT_ROOT'] . '/GoodGames/views/login.php';
         }
     break;
@@ -52,8 +52,8 @@ switch ($action) {
         header('Location: /GoodGames');
     break;
     default:
-    echo $_POST['username'];
-            exit;
+   // echo $_POST['username'];
+     //       exit;
         header('Location: /GoodGames');
     break;
 }
