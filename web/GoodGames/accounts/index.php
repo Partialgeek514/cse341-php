@@ -29,7 +29,7 @@ switch ($action) {
         include $_SERVER['DOCUMENT_ROOT'] . '/GoodGames/views/login.php';
     break;
     case 'loginUser':
-        echo $_POST['username'];
+        echo "loginUser";
             exit;
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
