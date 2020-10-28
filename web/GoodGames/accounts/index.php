@@ -28,7 +28,7 @@ switch ($action) {
     case 'loginPage':
         include $_SERVER['DOCUMENT_ROOT'] . '/GoodGames/views/login.php';
     break;
-    case 'loginUser':
+    case 'loginUse':
        // echo "loginUser";
          //   exit;
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
@@ -52,8 +52,8 @@ switch ($action) {
         header('Location: /GoodGames');
     break;
     default:
-   // echo $_POST['username'];
-     //       exit;
+        var_dump($_POST);
+        exit;
         header('Location: /GoodGames');
     break;
 }

@@ -9,8 +9,8 @@
     ini_set('memcached.sess_sasl_password', getenv('MEMCACHIER_PASSWORD'));
 }*/
 session_start();
-phpinfo();
-exit;
+//phpinfo();
+//exit;
 /*if (!isset($_SESSION['count'])) {
     $_SESSION['count'] = 0;
 }
