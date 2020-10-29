@@ -1,5 +1,5 @@
 <div class="reviewEntry">
-    <form action="/GoodGames" method="POST">
+    <form action="/GoodGames/index.php" method="POST">
         <label for="reviewText">Write a Review</label>
         <textarea name="reviewText" cols='50' rows="5"></textarea>
         <button type="submit">Submit</button>
