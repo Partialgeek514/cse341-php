@@ -111,10 +111,10 @@ function createReview($reviewText, $gameId) {
 function getReviews($gameId) {
     require_once $_SERVER['DOCUMENT_ROOT'] . '/GoodGames/models/connections.php';
     $reviewData = getReviewData($gameId);
-    $reviews = '';
+    $reviews = "<div class='review'><h3>Reviews:</h3></div>";
     foreach ($reviewData as $review) {
         $reviews .= "<div class='review'>
-                        <p class='date'>$review[reviewdate]</p>
+                        <p class='name&date'>$review[username] - $review[reviewdate]</p>
                         <p class='reviewText'>$review[reviewcontent]</p>
                      </div>";
     }

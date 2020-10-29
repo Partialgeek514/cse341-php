@@ -104,8 +104,10 @@ function insertReview($userId, $gameId, $reviewText) {
 
 function getReviewData($gameId) {
     $dbConn = getConnection();
-    $reviewData = $dbConn->query("SELECT * 
+    $reviewData = $dbConn->query("SELECT reviewContent, reviewDate, username 
                                   FROM reviews
+                                  INNER JOIN accounts
+                                  ON reviews.userId = accounts.userId
                                   WHERE gameId = $gameId");
     return $reviewData->fetchAll();
 }

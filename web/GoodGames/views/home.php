@@ -19,7 +19,7 @@
     <main>
         <?php
         if (isset($_SESSION['message'])) {
-            echo "<div class='feature'><p class='message'>$_SESSION[message]</p></div>";
+            echo "<p class='message'>$_SESSION[message]</p>";
             unset($_SESSION['message']);
         } ?>
         <div class="feature">
