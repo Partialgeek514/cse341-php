@@ -34,6 +34,7 @@
                 <input type="hidden" name="action" value="loginUser">
                 <button type="submit">Login</button>
             </form>
+            <a href='/GoodGames/accounts/index.php?action=signUpPage'>Create an Account</a>
         </div>
     </main>
     <footer>

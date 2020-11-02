@@ -84,7 +84,7 @@ function getGameDetails($gameId) {
 function loginUser($username, $password) {
     require_once $_SERVER['DOCUMENT_ROOT'] . '/GoodGames/models/connections.php';
     $userData = getUserData($username);
-    if ($userData['hashedpassword'] != $password) {
+    if (!password_verify($password, $userData['hashedpassword'])) {
         return false;
     }
     else {
@@ -119,4 +119,11 @@ function getReviews($gameId) {
                      </div>";
     }
     return $reviews;
+}
+
+function signUpUser($username, $password, $birthday) {
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/GoodGames/models/connections.php';
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $rowCount = insertNewUser($username, $hashedPassword, $birthday);
+    return $rowCount;
 }

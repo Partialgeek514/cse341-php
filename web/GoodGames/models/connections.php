@@ -111,3 +111,12 @@ function getReviewData($gameId) {
                                   WHERE gameId = $gameId");
     return $reviewData->fetchAll();
 }
+
+function insertNewUser($username, $hashedPassword, $birthday) {
+    $dbConn = getConnection();
+    $result = $dbConn->query("INSERT INTO accounts
+                             (username, hashedPassword, birthday, adminLevel)
+                             VALUES
+                             ('$username', '$hashedPassword', '$birthday', '1')");
+    return $result->rowCount();
+}

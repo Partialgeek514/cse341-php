@@ -51,6 +51,23 @@ switch ($action) {
         session_unset();
         header('Location: /GoodGames');
     break;
+    case 'signUpPage':
+        include $_SERVER['DOCUMENT_ROOT'] . '/GoodGames/views/signUp.php';
+    break;
+    case 'signUpUser':
+        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+        $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+        $birthday = filter_input(INPUT_POST, 'birthday', FILTER_SANITIZE_STRING);
+        $rowCount = signUpUser($username, $password, $birthday);
+        if ($rowCount == 1) {
+            $_SESSION['message'] = 'Account Creation Successful. Please Login.';
+            header("Location: /GoodGames/accounts/index.php?action=loginPage");
+        }
+        else {
+            $_SESSION['message'] = 'Account Creation Error. Please Try Again.';
+            header("Location: /GoodGames/accounts/index.php?action=signUpPage");
+        }
+    break;
     default:
         //var_dump($_POST);
         //exit;
